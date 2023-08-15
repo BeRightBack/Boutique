@@ -1,0 +1,149 @@
+@model ProductCreateOrUpdateModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>@(Model.Id == Guid.Empty ? "Create" : "Edit") Product</h2>
+
+@using (Html.BeginForm(Model.Id == Guid.Empty ? "Create" : "Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <h3>Main Information</h3>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Description)
+        @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Description)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.RetailPrice)
+        @Html.TextBoxFor(m => m.RetailPrice, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.RetailPrice)
+    </div>
+
+    <h3>Categories</h3>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CategoryIds)
+        @Html.ListBoxFor(m => m.CategoryIds, Model.CategorySelectList, new { @class = "form-control" })
+    </div>
+
+    <h3>Specifications</h3>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Specifications)
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                    <th></th>
+                </tr>
+            </thead>
+            @for (int i = 0; i < Model.Specifications.Count; i++)
+            {
+                <tr>
+                    <td>
+                        @Html.DropDownListFor(m => m.Specifications[i].Key, Model.SpecificationKeySelectList, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Specifications[i].Key)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Specifications[i].Value, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Specifications[i].Value)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(m => m.Specifications[i].SortOrder)
+                        <button type="button" class="btn btn-danger" onclick="removeSpecificationRow(this)">Delete</button>
+                    </td>
+                </tr>
+            }
+            <tfoot>
+                <tr>
+                    <td colspan="3">
+                        <button type="button" class="btn btn-primary" onclick="addSpecificationRow(this)">Add New Specification</button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <h3>Images</h3>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Images)
+        <div class="image-list">
+            @for (int i = 0; i < Model.Images.Count; i++)
+            {
+                <div class="form-group">
+                    <div class="image-preview">
+                        <img src="@Url.Content("~/Uploads/" + Model.Images[i].FileName + "_t.jpg")" alt="@Model.Images[i].FileName" />
+                    </div>
+                    <div class="file-input">
+                        <input type="file" name="imageFiles" id="imageFiles@(i+1)" onchange="changeImage(this)" />
+                        <input type="hidden" name="imageIds" value="@Model.Images[i].Id" />
+                        <input type="hidden" name="imageSortOrders" value="@Model.Images[i].SortOrder" />
+                    </div>
+                    <div class="image-actions">
+                        @if (Model.Images.Count > 1)
+                        {
+                            if (i == 0)
+                            {
+                                <button type="button" class="btn btn-default" disabled="disabled">&lt;&lt;</button>
+                            }
+                            else
+                            {
+                                <button type="button" class="btn btn-default" onclick="moveImageUp(this)">Up</button>
+                            }
+                            if (i == Model.Images.Count - 1)
+                            {
+                                <button type="button" class="btn btn-default" disabled="disabled">&gt;&gt;</button>
+                            }
+                            else
+                            {
+                                <button type="button" class="btn btn-default" onclick="moveImageDown(this)">Down</button>
+                            }
+ 
+                    }
+                    @Html.ActionLink("Delete", "DeleteImage", "Product", new { id = Model.Id, imageId = Model.Images[i].Id }, new { @class = "btn btn-danger" })
+                </div>
+            </div>
+        }
+        <div class="form-group add-new-image">
+            <input type="file" name="imageFiles" id="imageFiles" onchange="addNewImage(this)" />
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.ManufacturerIds)
+    @Html.ListBoxFor(m => m.ManufacturerIds, Model.ManufacturerSelectList, new { @class = "form-control" })
+</div>
+
+@Html.HiddenFor(m => m.Id)
+@Html.HiddenFor(m => m.SeoUrl)
+@Html.HiddenFor(m => m.DateAdded)
+@Html.HiddenFor(m => m.ActiveTab)
+
+<div class="form-group">
+    <button type="submit" class="btn btn-primary">
+        @(Model.Id == Guid.Empty ? "Create" : "Save")
+    </button>
+
+    @if (Model.Id != Guid.Empty)
+    {
+        <a href="@Url.Action("Edit", new { id = Model.Id, ActiveTab = "Category" })" class="btn btn-warning">Edit Categories</a>
+        <a href="@Url.Action("Edit", new { id = Model.Id, ActiveTab = "Manufacturer" })" class="btn btn-warning">Edit Manufacturers</a>
+        <a href="@Url.Action("Edit", new { id = Model.Id, ActiveTab = "Specification" })" class="btn btn-warning">Edit Specifications</a>
+        <a href="@Url.Action("Edit", new { id = Model.Id, ActiveTab = "Image" })" class="btn btn-warning">Edit Images</a>
+    }
+</div>
+}
+
+@section Scripts {
+
+
+
+}

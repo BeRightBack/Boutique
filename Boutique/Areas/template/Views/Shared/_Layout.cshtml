@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sidebar 07</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/dist/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/lib/font-awesome/dist/css/all.css" />
+    <link rel="stylesheet" href="~/sidebar/css/style.css">
+</head>
+
+<body>
+
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar" class="active">
+            <h1><a asp-area="" asp-controller="Home" asp-action="Index" class="logo"><img style="width:60px;height:60px; object-fit:cover; border-radius:30px" src="~/Images/system/icon.jpg"></a></h1>
+            <ul class="list-unstyled components mb-5">
+                <li class="active">
+                    <a asp-area="" asp-controller="Home" asp-action="Index"><span class="fa fa-home"></span> @Localize("Home")</a>
+                </li>
+                <li class="active">
+                    <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index"><span class="fa fa-chart-line"></span> @Localize("Dashboard")</a>
+                </li>
+                <li>
+                    <a asp-area="Admin" asp-controller="Category" asp-action="Index"><span class="fa-solid fa-store"></span> @Localize("Category")</a>
+                </li>   
+                <li>
+                    <a asp-area="Admin" asp-controller="Product" asp-action="Index"><span class="fa-solid fa-store"></span> @Localize("Product")</a>
+                </li>              
+                 <li>
+                    <a asp-area="Admin" asp-controller="Language" asp-action="Index"><span class="fa fa-globe"></span> @Localize("Language")</a>
+                </li>
+                <li>
+                    <a asp-area="Admin" asp-controller="Location" asp-action="Index"><span class="fa fa-globe"></span> @Localize("Location")</a>
+                </li>
+                <li>
+                    <a asp-area="Admin" asp-controller="Localization" asp-action="Index"><span class="fa fa-globe"></span> @Localize("Localization")</a>
+                </li>
+                <li>
+                    <a asp-area="Admin" asp-controller="ImageManager" asp-action="Index"><span class="fa fa-image"></span> @Localize("ImageManager")</a>
+                </li>
+                <li>
+                    <a asp-area="Admin" asp-controller="Document" asp-action="Index"><span class="fa fa-file"></span> @Localize("Document")</a>
+                </li>
+                <li>
+                    <a asp-area="Admin" asp-controller="User" asp-action="Index"><span class="fa fa-users-gear"></span> @Localize("User Admin")</a>
+                </li>
+                <li>
+                    <a asp-area="Admin" asp-controller="RoleAdmin" asp-action="Index"><span class="fa fa-user-lock"></span> @Localize("Role Admin")</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa fa-sticky-note"></span> Blog</a>
+                </li>
+                <li>
+                    <a href="#"><span class="fa fa-cogs"></span> Services</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact"><span class="fa fa-paper-plane"></span> @Localize("Contact")</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="About"><span class="fa fa-user"></span> @Localize("About")</a>
+                </li>
+            </ul>
+
+            <div class="footer">
+                <div class="row pt-5 mt-5 text-center">
+                    <div class="">
+                        <p>&copy; 2023 All rights reserved - Boutique Indiana - <a class="nav-link" asp-area="" asp-controller="Home"
+                                asp-action="Privacy">@Localize("Privacy")</a></p>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                        <i class="fa fa-bars"></i>
+                        <span class="sr-only">Toggle Menu</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto me-5">
+                            <div class="left-top-bar text-dark ms-5">
+                            <form action="" class="" >
+                                <div class="input-group">
+                                    <i class="input-group-text bi bi-search border-1"></i>
+                                    <input class="input-field form-control border-1" type="text" placeholder="Search">
+                                </div>                                
+                            </form>  
+                        </div>
+                        </ul>
+                        <partial name="_LocalPartial" />
+                    <partial name="_LoginPartial" />
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/sidebar/js/popper.js"></script>
+    <script src="~/sidebar/js/main.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

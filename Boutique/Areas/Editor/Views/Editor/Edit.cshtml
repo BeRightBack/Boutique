@@ -1,0 +1,67 @@
+@model ContentViewModel
+
+@{
+    ViewBag.Title = "Create";
+    
+}
+
+<h2>Edit</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit" id="contentForm">
+            <div id="validation"></div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" id="continueEditing" name="continueEditing" value="false" />
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HtmlContent" class="control-label"></label>
+                <textarea id="tiny" name="HtmlContent" class="form-control">
+                    @if(Model.Id == 0)
+                    {
+                        <a >Nouveau texte</a>
+                    }else
+                    {
+                        @Model.HtmlContent
+                    }</textarea>
+                <span asp-validation-for="HtmlContent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" id="save" value="Save" class="btn btn-primary fa fa-save" />
+                <input type="submit" id="continue" value="Save and continue editing" class="btn btn-primary fa fa-save" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<div>
+    <p>
+        <a>@Html.Raw(Model.HtmlContent)</a> </p>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+        $(document).ready(function () {
+            $("#save").click(function () {
+                $("#continueEditing").val("false");
+            });
+            $("#continue").click(function () {
+                $("#continueEditing").val("true");
+            });
+            
+        });
+    </script>     
+   
+}

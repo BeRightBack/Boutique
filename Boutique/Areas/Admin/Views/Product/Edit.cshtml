@@ -1,0 +1,138 @@
+@model Boutique.Areas.Admin.Models.ProductCreateOrUpdateModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea id="tiny" asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SKU" class="control-label"></label>
+                <input asp-for="SKU" class="form-control" />
+                <span asp-validation-for="SKU" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortDescription" class="control-label"></label>
+                <input asp-for="ShortDescription" class="form-control" />
+                <span asp-validation-for="ShortDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CostPrice" class="control-label"></label>
+                <input asp-for="CostPrice" class="form-control" />
+                <span asp-validation-for="CostPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RetailPrice" class="control-label"></label>
+                <input asp-for="RetailPrice" class="form-control" />
+                <span asp-validation-for="RetailPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpecialPrice" class="control-label"></label>
+                <input asp-for="SpecialPrice" class="form-control" />
+                <span asp-validation-for="SpecialPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpecialPriceStartDate" class="control-label"></label>
+                <input asp-for="SpecialPriceStartDate" class="form-control" />
+                <span asp-validation-for="SpecialPriceStartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpecialPriceEndDate" class="control-label"></label>
+                <input asp-for="SpecialPriceEndDate" class="form-control" />
+                <span asp-validation-for="SpecialPriceEndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockQuantity" class="control-label"></label>
+                <input asp-for="StockQuantity" class="form-control" />
+                <span asp-validation-for="StockQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinimumStockQuantity" class="control-label"></label>
+                <input asp-for="MinimumStockQuantity" class="form-control" />
+                <span asp-validation-for="MinimumStockQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NotifyForQuantityBelow" class="control-label"></label>
+                <input asp-for="NotifyForQuantityBelow" class="form-control" />
+                <span asp-validation-for="NotifyForQuantityBelow" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DisplayAvailability" /> @Html.DisplayNameFor(model => model.DisplayAvailability)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinimumCartQuantity" class="control-label"></label>
+                <input asp-for="MinimumCartQuantity" class="form-control" />
+                <span asp-validation-for="MinimumCartQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaximumCartQuantity" class="control-label"></label>
+                <input asp-for="MaximumCartQuantity" class="form-control" />
+                <span asp-validation-for="MaximumCartQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SeoUrl" class="control-label"></label>
+                <input asp-for="SeoUrl" class="form-control" />
+                <span asp-validation-for="SeoUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetaTitle" class="control-label"></label>
+                <input asp-for="MetaTitle" class="form-control" />
+                <span asp-validation-for="MetaTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetaKeywords" class="control-label"></label>
+                <input asp-for="MetaKeywords" class="form-control" />
+                <span asp-validation-for="MetaKeywords" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetaDescription" class="control-label"></label>
+                <input asp-for="MetaDescription" class="form-control" />
+                <span asp-validation-for="MetaDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Published" /> @Html.DisplayNameFor(model => model.Published)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateAdded" class="control-label"></label>
+                <input asp-for="DateAdded" class="form-control" />
+                <span asp-validation-for="DateAdded" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

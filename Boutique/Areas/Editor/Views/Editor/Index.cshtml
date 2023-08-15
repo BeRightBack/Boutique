@@ -1,0 +1,74 @@
+@model IEnumerable<ContentViewModel>
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<h1>@ViewData["Title"]</h1>
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
+</p>
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-controller="Editor" asp-action="Delete" method="post" id="listForm">
+            <table id="dataTbl" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="selectAll" /></th>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="@item.Id" name="ids" value="@item.Id" />
+                            </td>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+
+                            <td>
+                                <div class="input-group">
+                                    <a asp-controller="Editor" asp-action="Edit" asp-route-id="@item.Id" id="@item.Id"
+                                        class="btn btn-primary input-stack-margin">
+                                        <i class="fa fa-pencil-square-o">&nbsp; Edit</i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </form> <button type="button" id="delete" class="btn btn-danger input-stack-margin"><i class="fa fa-trash-o"></i>&nbsp; Delete (selected)</button>
+    </div> <!-- col md 12 end -->
+</div> <!-- row end -->
+
+
+@section Scripts {
+    <script>
+        $('#selectAll').click(function () {
+                    $('input[name="ids"]').prop('checked', this.checked);
+                });
+        // delete
+        $('#delete').on('click', function (event) {
+            var ids = [];
+            var form = $('#listForm');
+            var checkboxArray = document.getElementsByName('ids');
+
+            // check if checkbox is checked
+            for (var i = 0; i < checkboxArray.length; i++) {
+                if (checkboxArray[i].checked)
+                    ids.push(checkboxArray[i].value);
+            }
+
+            // submit form
+            if (ids.length > 0) {
+                if (confirm("Are you sure you want to delete this item(s)?")) {
+                    form.submit();
+                }
+            }
+        });
+    </script>
+}

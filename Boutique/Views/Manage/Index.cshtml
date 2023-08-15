@@ -1,0 +1,85 @@
+@model IndexViewModel
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (!string.IsNullOrEmpty(Model.StatusMessage))
+{
+    <div class="alert alert-success" role="alert">
+        @Model.StatusMessage
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <form method="post" enctype="multipart/form-data">
+            <h4>Personal Information</h4>
+            <hr />
+            <div class="form-group">
+                <label for="FirstName">First Name</label>
+                <input type="text" class="form-control" id="FirstName" name="FirstName" value="@Model.FirstName" />
+            </div>
+
+            <div class="form-group">
+                <label for="LastName">Last Name</label>
+                <input type="text" class="form-control" id="LastName" name="LastName" value="@Model.LastName" />
+            </div>
+
+            <hr />
+
+            <h4>Contact Information</h4>
+            <hr />
+
+            <div class="form-group">
+                <label for="PhoneNumber">Phone Number</label>
+                <input type="tel" class="form-control" id="PhoneNumber" name="PhoneNumber" value="@Model.PhoneNumber" />
+            </div>
+
+            <hr />
+
+            <h4>Change Username</h4>
+            <hr />
+
+            <div class="form-group">
+                <label for="Username">Username</label>
+                <input type="text" class="form-control" id="Username" name="Username" value="@Model.Username" />
+                <small id="usernameHelp" class="form-text text-muted">@Model.UserNameChangeLimitMessage</small>
+            </div>
+
+            <hr />
+
+            <h4>Upload profile picture</h4>
+            <hr />
+
+            <div class="form-group">
+                <label for="ProfilePictureFile">Profile Picture</label>
+                <input type="file" class="form-control-file" id="ProfilePictureFile" name="ProfilePictureFile">
+            </div>
+
+            <hr />
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+
+            <input asp-for="ProfilePicturePath" type="hidden" />
+            <input name="__RequestVerificationToken" type="hidden" value="@Html.AntiForgeryToken()" />
+        </form>
+    </div>
+
+    <div class="col-md-4">
+        <h4>Profile Picture</h4>
+        <hr />
+        @if (Model.ProfilePicture != null)
+        {
+            <img src="@Model.ProfilePicturePath" class="img-fluid" />
+        }
+        else
+        {
+            <img  class="img-fluid" />
+        }
+    </div>
+</div>

@@ -1,0 +1,61 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "bootstrap@5.3.0",
+      "destination": "wwwroot/lib/bootstrap/dist"
+    },
+    {
+      "library": "jquery@3.6.1",
+      "destination": "wwwroot/lib/jquery/dist"
+    },
+    {
+      "library": "jquery-validate@1.19.5",
+      "destination": "wwwroot/lib/jquery-validation/dist"
+    },
+    {
+      "library": "jquery-validation-unobtrusive@4.0.0",
+      "destination": "wwwroot/lib/jquery-validation-unobtrusive/dist"
+    },
+    {
+      "library": "font-awesome@6.4.0",
+      "destination": "wwwroot/lib/font-awesome/dist"
+    },
+    {
+      "library": "bootstrap-icons@1.10.5",
+      "destination": "wwwroot/lib/bootstrap-icons/dist"
+    },
+    {
+      "provider": "unpkg",
+      "library": "aos@2.3.4",
+      "destination": "wwwroot/lib/aos"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "slick-carousel@1.8.1",
+      "destination": "wwwroot/lib/slick-carousel"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "boxicons@2.1.4",
+      "destination": "wwwroot/lib/boxicons"
+    },
+    {
+      "library": "codemirror@5.62.3",
+      "destination": "wwwroot/lib/codemirror"
+    },
+    {
+      "library": "ckeditor@4.22.1",
+      "destination": "wwwroot/lib/ckeditor"
+    },
+    {
+      "library": "froala-editor@3.2.6",
+      "destination": "wwwroot/lib/froala"
+    },
+    {
+      "library": "animate.css@4.1.1",
+      "destination": "wwwroot/lib/animate/animate.css"
+    }
+  ]
+}

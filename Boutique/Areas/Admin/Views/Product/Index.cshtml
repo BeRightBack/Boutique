@@ -1,0 +1,161 @@
+@model IEnumerable<Boutique.Entity.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RetailPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SKU)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpecialPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpecialPriceStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpecialPriceEndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinimumStockQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NotifyForQuantityBelow)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DisplayAvailability)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinimumCartQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaximumCartQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeoUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MetaTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MetaKeywords)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MetaDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Published)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAdded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateModified)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RetailPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SKU)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpecialPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpecialPriceStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpecialPriceEndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinimumStockQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotifyForQuantityBelow)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisplayAvailability)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinimumCartQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaximumCartQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeoUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaKeywords)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Published)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAdded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateModified)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

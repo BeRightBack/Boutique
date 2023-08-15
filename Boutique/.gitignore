@@ -1,0 +1,12 @@
+appsettings.json
+SeedData.cs
+/Database/*
+/Viewstest/*
+/bin/*
+/logs/*
+/obj/*
+/Properties/*
+/wwwroot/coza/*
+/wwwroot/tmp/*
+/wwwroot/ela/*
+

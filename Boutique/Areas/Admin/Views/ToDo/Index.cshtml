@@ -1,0 +1,104 @@
+@model IEnumerable<Todo>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4>ToDo's</h4>
+
+<div class="row">
+    <div class="col-md-2">
+        <form asp-action="Filter" method="post">
+            <div class="mb-3">
+                <label class="form-label">Category</label>
+                <select name="filter" class="form-select"
+                    asp-items="@(new SelectList(ViewBag.Categories, "Id", "Name",ViewBag.Filters.CategoryId))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+             <div class="mb-3">
+                <label class="form-label">Due</label>
+                <select name="filter" class="form-select"
+                    asp-items="@(new SelectList(ViewBag.DueFilters, "Key", "Value",ViewBag.Filters.Due))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+             <div class="mb-3">
+                <label class="form-label">Status</label>
+                <select name="filter" class="form-select"
+                    asp-items="@(new SelectList(ViewBag.Statuses, "Id", "Name",ViewBag.Filters.StatusId))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+                <button type="submit" class="btn btn-primary btn-sm ">Filter</button>
+                <a asp-action="Index" asp-route-id="" class="btn btn-primary btn-sm" >Clear</a>
+        </form>
+    </div>
+
+    <div class="col-md-10">
+        <form asp-action="ChangeStatus" method="post" asp-route-id="@ViewBag.Filters.FilterString">
+            <table class="">
+                <thead>
+                    <tr>                        
+                        <th>
+                            @Html.DisplayNameFor(model => model.Category)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DueDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        string overdue = item.Overdue ? "bg-danger" : "";
+                            <tr>                            
+                                <td class="sp1">
+                                @item.Category.Name
+                                </td>
+                                <td class="sp2">
+                                @item.Description
+                                </td>
+                                <td class="sp3 @overdue">
+                                @item.DueDate?.ToShortDateString()
+                                </td>
+                                <td class="sp4">
+                                @if (item.StatusId == "open")
+                                {
+                                            <span class="badge bg-danger">@item.Status.Name</span>
+                                            <button type="submit" class="btn btn-primary btn-sm" 
+                                            name="@nameof(Todo.Id)" value="@item.Id">@Localize("Mark In Progress")</button>
+                                }
+                                @if (item.StatusId == "inprogress")
+                                {
+                                            <span class="badge bg-danger">@item.Status.Name</span>
+                                            <button type="submit" class="btn btn-primary btn-sm" 
+                                            name="@nameof(Todo.Id)" value="@item.Id">@Localize("Mark Completed")</button>
+                                }
+                                @if (item.StatusId == "closed")
+                                {
+                                            <span class="badge bg-danger">@item.Status.Name</span>
+                                    @* <button type="submit" class="btn btn-primary btn-sm" 
+                                    name="@nameof(Todo.Id)" value="@item.Id">@Localize("Mark Completed")</button> *@
+                                }
+
+                                </td>                            
+                            </tr>
+                    }
+                </tbody>
+            </table>
+
+        </form>
+        <form asp-action="DeleteCompleted" method="post" asp-route-id="@ViewBag.Filters.FilterString">
+            <a asp-action="Create" class="btn btn-primary btn-sm">@Localize("Add New Task")</a>
+            <button type="submit" class="btn btn-danger btn-sm">@Localize("Delete Completed")</button>            
+        </form>
+
+    </div>
+</div>

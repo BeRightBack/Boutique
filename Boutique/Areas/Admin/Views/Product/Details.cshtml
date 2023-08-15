@@ -1,0 +1,184 @@
+@model Boutique.Areas.Admin.Models.ProductDetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MainImage)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.MainImage != null)
+            {
+                <img src="@Model.MainImage" style="max-width:200px;max-height:120px;" class="card-img-top img-fluid" />
+            }
+            else
+            {
+                <img src="~/Images/system/no-image.png" style="max-width:40px;max-height:40px;"
+                    class="card-img-top img-fluid" />
+            }
+            @Html.DisplayFor(model => model.MainImage)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SKU)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SKU)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ShortDescription)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ShortDescription)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CostPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CostPrice)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RetailPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RetailPrice)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SpecialPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SpecialPrice)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SpecialPriceStartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SpecialPriceStartDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SpecialPriceEndDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SpecialPriceEndDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StockQuantity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StockQuantity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MinimumStockQuantity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MinimumStockQuantity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NotifyForQuantityBelow)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NotifyForQuantityBelow)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DisplayAvailability)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DisplayAvailability)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MinimumCartQuantity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MinimumCartQuantity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MaximumCartQuantity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaximumCartQuantity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SeoUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SeoUrl)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MetaTitle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MetaTitle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MetaKeywords)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MetaKeywords)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MetaDescription)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MetaDescription)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Published)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Published)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DateAdded)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateAdded)
+        </dd>
+        @if (Model.Images != null)
+        {
+            foreach (var image in Model.Images)
+            {
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => image.FileName)
+                </dt>
+                <dd class="col-sm-10">
+                    @if (image.FileName != null)
+                    {
+                        <img src="@image.FileName" style="max-width:200px;max-height:120px;" class="card-img-top img-fluid" />
+                    }
+                    else
+                    {
+                        <img src="~/Images/system/no-image.png" style="max-width:40px;max-height:40px;"
+                            class="card-img-top img-fluid" />
+                    }
+                    @Html.DisplayFor(model => image.FileName)
+                </dd>
+            }}
+        </dl>
+    </div>
+            @Html.ActionLink("Edit", "Edit", new {  id = Model.Id })  
+ |
+<a asp-action="Index">Back to List</a>
+    </div>

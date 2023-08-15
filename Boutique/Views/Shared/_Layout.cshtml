@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Boutique</title>
+
+    <link rel="icon" type="image/png" href="~/Images/system/icon.png" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/dist/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/lib/font-awesome/dist/css/all.css" />
+
+
+    <link rel="stylesheet" href="~/@(nameof(Boutique)).styles.css" asp-append-version="true" />
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white  mb-3">
+        <div class="container-fluid ">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+
+                <ul class="navbar-nav flex-grow-1">
+
+                    <div class="ms-5">
+                        <form action="" class="">
+                            <div class="input-group">
+                                <i class="input-group-text bi bi-search border-1"></i>
+                                <input class="input-field form-control border-1" type="text" placeholder="Search">
+                            </div>
+                        </form>
+                    </div>
+
+
+                </ul>
+                <ul class="navbar-nav flex-grow-1 justify-content-end me-3">
+                    @if (User.Identity?.IsAuthenticated ?? false)
+                    {
+                        if (User.IsInRole("Administrator"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Dashboard"
+                                    asp-action="Index">@Localize("Dashboard")</a>
+                            </li>
+                        }
+                    }
+                </ul>
+                <partial name="_LocalPartial" />
+                <partial name="_LoginPartial" />
+            </div>
+        </div>
+    </nav>
+    <div class="site-navbar">
+        <div class="site-navbar-top">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+
+                    <div class="col-6 col-md-4 ">
+                        <p>Free shipping for standard order over $100</p>
+                    </div>
+                    <div class="col-10 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
+                        <div class="button ">
+                            <button type="button" class="text" onclick="location.href='@Url.Action("Index", "Home")'">
+                                <h2>Boutique Indiana</h2>
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 order-3 order-md-3 text-end">
+                        <div class="site-top-icons">
+                            <ul>
+                                <li><a href="#"><span class="fa-solid fa-user "></span></a></li>
+                                <li><a href="#"><span class="fa-regular fa-heart" </span></a></li>
+                                <li>
+                                    <a href="cart.html" class="site-cart">
+                                        <span class="fa-solid fa-cart-shopping"></span>
+                                        <span class="count">2</span>
+                                    </a>
+                                </li>
+                                <li class="d-inline-block d-md-none ml-md-0"><a href="#"
+                                        class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="site-navigation text-end text-md-center" role="navigation">
+            <div class="container-fluid">
+                <ul class="site-menu">
+                    <li class="">
+                        <a href="/">@Localize("Home")</a>
+                    </li>
+                    <li>
+                        <a href="/Store">@Localize("Boutique")</a>
+                    </li>
+                    <li>
+                        <a href="/Store">New Arrivals</a>
+                    </li>
+                    <li class="">
+                        <a href="/Home/About">@Localize("About")</a>
+                    </li>
+
+
+                    <li>
+                        <a href="/Home/Contact">@Localize("Contact")</a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <partial name="_Footer" />
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

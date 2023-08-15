@@ -1,0 +1,65 @@
+﻿@model CategoryCreateOrUpdateModel
+
+<h2>Edit Category</h2>
+
+<form asp-action="Edit" asp-controller="Category" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea id="tiny" asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ParentCategoryId"></label>
+        <select asp-for="ParentCategoryId" asp-items="Model.ParentCategorySelectList" class="form-control">
+            <option value="">Select a parent category</option>
+        </select>
+        <span asp-validation-for="ParentCategoryId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SeoUrl"></label>
+        <input asp-for="SeoUrl" class="form-control" />
+        <span asp-validation-for="SeoUrl" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MetaTitle"></label>
+        <input asp-for="MetaTitle" class="form-control" />
+        <span asp-validation-for="MetaTitle" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MetaDescription"></label>
+        <input asp-for="MetaDescription" class="form-control" />
+        <span asp-validation-for="MetaDescription" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MetaKeywords"></label>
+        <input asp-for="MetaKeywords" class="form-control" />
+        <span asp-validation-for="MetaKeywords" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <div class="checkbox">
+            <label asp-for="Published">
+                <input asp-for="Published" />
+                @Html.DisplayNameFor(model => model.Published)
+            </label>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-action="List" class="btn btn-default">Cancel</a>
+    </div>
+</form>
