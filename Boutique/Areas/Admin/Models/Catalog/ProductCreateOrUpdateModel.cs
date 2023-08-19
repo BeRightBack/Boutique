@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Boutique.Areas.Admin.Models;
+using Boutique.Middleware;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Boutique.Areas.Admin.Models;
@@ -30,17 +31,18 @@ public class ProductCreateOrUpdateModel
     public string SKU { get; set; }
     public string ShortDescription { get; set; }
 
-    [Required]
-    [Range(0, 1000000)]
-    [Display(Name = "Cost Price")]
+    [Required(ErrorMessage = "Price is required")]
+    [DecimalPrecision(2)]
+    [Display(Name = "Cost Price ($)")]
     public decimal? CostPrice { get; set; }
 
-    [Required]
-    [Range(0, 1000000)]
+    [Required(ErrorMessage = "Price is required")]
+    [DecimalPrecision(2)]
     [Display(Name = "Product Price")]
     public decimal? RetailPrice { get; set; }
-
-    [Range(0, 1000000)]
+    
+    
+    [DecimalPrecision(2)]
     [Display(Name = "Special Product Price")]
     public decimal? SpecialPrice { get; set; }
 

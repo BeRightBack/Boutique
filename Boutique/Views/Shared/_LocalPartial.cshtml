@@ -13,11 +13,11 @@
         .ToList();
 }
 
-<ul class="navbar-nav me-3">
+<ul class="site-navbar navbar-nav me-3">
     <li class="nav-item" >
         <form asp-area="" asp-action="ChangeLanguage" asp-controller="Home" method="post">
             <input type="hidden" id="returnUrl" name="returnUrl" value="@returnUrl" />
-            <select id="culture" name="culture" class="form-control" onchange="this.form.submit();"
+            <select id="culture" name="culture" style="background: aqua" onchange="this.form.submit();"
                 asp-items="cultureItems" asp-for="@requestCulture.UICulture.Name">
             </select>
         </form>

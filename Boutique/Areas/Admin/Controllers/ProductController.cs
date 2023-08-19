@@ -226,7 +226,10 @@ public class ProductController : Controller
                 SaveSpecificationMappings(model);
 
                 if (continueEditing)
-                    return RedirectToAction("Edit", new { id = productEntity.Id, model.ActiveTab });
+                {
+                    return RedirectToAction("Edit", new { id = productEntity.Id });
+                }
+                    
 
                 return RedirectToAction("List");
             }

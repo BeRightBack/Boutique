@@ -3,20 +3,23 @@
 @{
     ViewData["Title"] = "Edit";
 }
-    
-<link rel="stylesheet" href="~/multiselect/bootstrap-select.min.css" />
-<link rel="stylesheet" href="~/multiselect/bootstrap.min.css" />
 
-<h2>Edit</h2>
+<h1>Edit</h1>
+
+<h4>ProductCreateOrUpdateModel</h4>
 <hr />
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+            <div class="form-group">
+                <label asp-for="ActiveTab" class="control-label"></label>
+                <input asp-for="ActiveTab" class="form-control" />
+                <span asp-validation-for="ActiveTab" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control " disabled>
+                <input asp-for="Id" class="form-control" />
                 <span asp-validation-for="Id" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -25,28 +28,19 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ShortDescription" class="control-label"></label>
-                <input asp-for="ShortDescription" class="form-control" />
-                <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <p>
-                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
-                    aria-expanded="false" aria-controls="collapseExample">
-                    Edit Description
-                </a>
-            </p>
-            <div class="collapse" id="collapseExample">
-                <div class="form-group card card-body">
-                    <label asp-for="Description" class="control-label"></label>
-                    <textarea id="tiny" asp-for="Description" class="form-control"></textarea>
-                    <span asp-validation-for="Description" class="text-danger"></span>
-                </div>
-            </div>
-           
             <div class="form-group">
                 <label asp-for="SKU" class="control-label"></label>
                 <input asp-for="SKU" class="form-control" />
                 <span asp-validation-for="SKU" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortDescription" class="control-label"></label>
+                <input asp-for="ShortDescription" class="form-control" />
+                <span asp-validation-for="ShortDescription" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CostPrice" class="control-label"></label>
@@ -90,8 +84,7 @@
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="DisplayAvailability" /> @Html.DisplayNameFor(model =>
-                    model.DisplayAvailability)
+                    <input class="form-check-input" asp-for="DisplayAvailability" /> @Html.DisplayNameFor(model => model.DisplayAvailability)
                 </label>
             </div>
             <div class="form-group">
@@ -135,31 +128,6 @@
                 <span asp-validation-for="DateAdded" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CategoryIds"></label>
-                <select class="form-select form-select-sm" aria-label=".form-select-sm "
-                    asp-items="Model.CategorySelectList">
-                    <option selected>Select a Category</option>
-                </select>
-                <span asp-validation-for="CategoryIds" class="text-danger"></span>
-
-            </div>
-            <div class="form-group">
-                <label asp-for="ManufacturerIds"></label>
-                <select class="form-control form-select form-select-sm" aria-label=".form-select-sm "
-                    asp-items="Model.ManufacturerSelectList">
-                    <option selected>Select a Manufacturer</option>
-                </select>
-                <span asp-validation-for="ManufacturerIds" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Specifications"></label>
-                <select asp-items="Model.SpecificationKeySelectList" class="selectpicker form-control" multiple>
-
-                </select>
-                <span asp-validation-for="Specifications" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
@@ -171,13 +139,5 @@
 </div>
 
 @section Scripts {
-    
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/multiselect/popper.min.js"></script>
-    <script src="~/multiselect/bootstrap.min.js"></script>
-    <script src="~/multiselect/bootstrap-select.min.js"></script>
-    
-    <script src="~/multiselect/main.js"></script>
-
-   
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
