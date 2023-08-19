@@ -12,15 +12,7 @@ SeedData.cs
 !/wwwroot/sidebar/*
 !/wwwroot/Images/*
 
-!/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css
-!/wwwroot/lib/bootstrap-icons/dist/font/bootstrap-icons.css
-!/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js
-!/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js
-!/wwwroot/lib/jquery/dist/jquery.min.js
-!/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js
-!/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js
-
-!/wwwroot/lib/font-awesome/dist/css/all.css
+!/wwwroot/lib/*
 
 !/wwwroot/template2/vendors/feather/feather.css
 !/wwwroot/template2/vendors/mdi/css/materialdesignicons.min.css
