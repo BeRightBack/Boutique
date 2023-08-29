@@ -227,7 +227,7 @@ public class ProductController : Controller
 
                 if (continueEditing)
                 {
-                    return RedirectToAction("Edit", new { id = productEntity.Id });
+                    return RedirectToAction("Edit", new { id = productEntity.Id, ActiveTab = model.ActiveTab});
                 }
                     
 
@@ -527,5 +527,6 @@ public class ProductController : Controller
         // save to database
         _specificationService.DeleteAllProductSpecificationMappings(model.Id);
         _specificationService.InsertProductSpecificationMappings(specificationMappings);
-    }
+    }   
+
 }

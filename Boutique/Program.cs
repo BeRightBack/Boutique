@@ -210,8 +210,6 @@ finally
     Log.CloseAndFlush();
 }
 
-
-
 static async Task SeedLanguageAsync(WebApplication app)
 {
     using var scope = app.Services.CreateScope();

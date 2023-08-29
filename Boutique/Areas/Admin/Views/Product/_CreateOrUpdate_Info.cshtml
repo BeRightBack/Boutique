@@ -3,55 +3,82 @@
 <div class="form-horizontal">
     <!-- Published -->
     <div class="form-group">
-        <label asp-for="Published" class="control-label col-sm-2"></label>
-        <div class="col-sm-10">
-            <input type="checkbox" asp-for="Published" class="" />
-            <span asp-validation-for="Published" class="text-danger"></span>
+        <div class="checkbox">
+            <label>
+                <input asp-for="Published" />
+                @Html.DisplayNameFor(model => model.Published)
+            </label>
         </div>
     </div>
-
-    <!-- Name -->
     <div class="form-group">
-        <label asp-for="Name" class="control-label col-sm-2"></label>
-        <div class="col-sm-10">
-            <input asp-for="Name" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger"></span>
+        <div class="checkbox">
+            <label>
+                <input asp-for="DisplayAvailability" />
+                @Html.DisplayNameFor(model => model.DisplayAvailability)
+            </label>
         </div>
     </div>
-
-    <!-- Full Description -->
     <div class="form-group">
-        <label asp-for="Description" class="control-label col-sm-2"></label>
-        <div class="col-sm-10">
-            <textarea asp-for="Description" class="form-control"></textarea>
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ShortDescription" class="control-label"></label>
+        <input asp-for="ShortDescription" class="form-control" />
+        <span asp-validation-for="ShortDescription" class="text-danger"></span>
+    </div>
+    <p>
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
+           aria-expanded="false" aria-controls="collapseExample">
+            Edit Description
+        </a>
+    </p>
+    <div class="collapse" id="collapseExample">
+        <div class="form-group card card-body">
+            <label asp-for="Description" class="control-label"></label>
+            <textarea id="tiny" asp-for="Description" class="form-control"></textarea>
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
     </div>
-</div> <!-- form horizontal end -->
 
-<script>
-    // ckeditor
-    CKEDITOR.replace('Description', {
-        customConfig: false,
-        enterMode: CKEDITOR.ENTER_BR,
-        toolbarGroups: [
-		    { name: 'clipboard', groups: ['clipboard', 'undo'] },
-		    { name: 'editing', groups: ['find', 'selection', 'spellchecker'] },
-		    { name: 'forms' },
-		    { name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
-		    { name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi'] },
-		    { name: 'links' },
-		    { name: 'insert' },
-		    { name: 'styles' },
-		    { name: 'colors' },
-		    { name: 'tools' },
-		    { name: 'others' },
-            { name: 'document', groups: ['mode', 'document', 'doctools'] },
-		    { name: 'about' }
-        ],
-        removeButtons: 'Cut,Copy,Paste,Anchor,Underline,Strike,Subscript,Superscript',
-        removeDialogTabs: 'link:advanced',
-        removePlugins: 'a11yhelp,bidi,panelbutton,colorbutton,colordialog,menu,contextmenu,dialogadvtab,div,entities,popup,filebrowser,find,flash,floatingspace,font,forms,htmlwriter,iframe,indentblock,liststyle,magicline,newpage,pagebreak,pastefromword,pastetext,preview,print,resize,save,menubutton,scayt,selectall,showblocks,showborders,smiley,specialchar,tab,table,tabletools,templates,wsc',
-        height: 300
-    });
-</script>
+    <div class="form-group">
+        <label asp-for="SKU" class="control-label"></label>
+        <input asp-for="SKU" class="form-control" />
+        <span asp-validation-for="SKU" class="text-danger"></span>
+    </div>
+</div> <!-- form horizontal end -->
+<p>
+    <input type="radio" name="group1" value="2" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" id="panel1">panel 1
+    <br>
+    <input type="radio" name="group1" value="3" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" id="panel2"> panel 2
+
+</p>
+
+<div class="panel-heading" id="collapse1" >
+    <div id="collapseTwo" class="panel-collapse collapse">
+        <div class="panel-body">
+            you are now in body of panel1
+        </div>
+    </div>
+</div>
+<div class="panel-heading" id="panel2" >
+    <div id="collapseThree" class="panel-collapse collapse">
+        <div class="panel-body">
+            you are now in body of panel 2
+        </div>
+    </div>
+</div>
+<p>
+    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Link with href
+    </a>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Button with data-bs-target
+    </button>
+</p>
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+        Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+    </div>
+</div>

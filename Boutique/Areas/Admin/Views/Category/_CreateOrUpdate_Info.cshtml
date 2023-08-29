@@ -18,15 +18,27 @@
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
     </div>
-
-    <!-- Description -->
+    <p>
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
+           aria-expanded="false" aria-controls="collapseExample">
+            Edit Description
+        </a>
+    </p>
+    <div class="collapse" id="collapseExample">
+        <div class="form-group card card-body">
+            <label asp-for="Description" class="control-label"></label>
+            <textarea id="tiny" asp-for="Description" class="form-control"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+    </div>
+    @* <!-- Description -->
     <div class="form-group">
         <label asp-for="Description" class="control-label col-sm-2"></label>
         <div class="col-sm-10">
             <textarea asp-for="Description" class="form-control"></textarea>
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
-    </div>
+    </div> *@
 
     <!-- Parent Category -->
     <div class="form-group">

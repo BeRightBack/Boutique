@@ -285,7 +285,6 @@ iframe {
   border: none;
 }
 
-
 .button {
   display: inline-block;
   padding: 20px 20px;
@@ -297,9 +296,9 @@ iframe {
 }
 
 .button:hover {
-  background-color: #000;
+  background-color: #000 !important;
   /* Black */
-  color: white;
+  color: white !important;
 }
 
 .text {

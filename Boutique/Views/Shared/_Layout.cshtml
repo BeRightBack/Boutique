@@ -65,7 +65,7 @@
                         <p>Free shipping for standard order over $100</p>
                     </div>
                     <div class="col-10 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
-                        <div class="button ">
+                        <div class="button">
                             <button type="button" class="text" onclick="location.href='@Url.Action("Index", "Home")'">
                                 <h2>Boutique Indiana</h2>
                             </button>
@@ -92,32 +92,31 @@
                 </div>
             </div>
         </div>
-        <div class="site-navigation text-end text-md-center" role="navigation">
-            <div class="container-fluid">
-                <ul class="site-menu">
-                    <li class="">
-                        <a href="/">@Localize("Home")</a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <div class="container-fluid justify-content-center">
+                <ul class="navbar-nav align-items-center justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">@Localize("Home")</a>
                     </li>
-                    <li>
-                        <a href="/Store">@Localize("Boutique")</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Store">@Localize("Boutique")</a>
                     </li>
-                    <li>
-                        <a href="/Store">New Arrivals</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Store">New Arrivals</a>
                     </li>
-                    <li class="">
-                        <a href="/Home/About">@Localize("About")</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/About">@Localize("About")</a>
                     </li>
 
 
-                    <li>
-                        <a href="/Home/Contact">@Localize("Contact")</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/Contact">@Localize("Contact")</a>
                     </li>
 
 
                 </ul>
             </div>
-        </div>
-
+</nav>
     </div>
     <div class="container">
         <main role="main" class="pb-3">

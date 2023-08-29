@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Boutique.Areas.Admin.Models;
 using Boutique.Middleware;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Boutique.Areas.Admin.Models;
@@ -34,14 +35,14 @@ public class ProductCreateOrUpdateModel
     [Required(ErrorMessage = "Price is required")]
     [DecimalPrecision(2)]
     [Display(Name = "Cost Price ($)")]
-    public decimal? CostPrice { get; set; }
+    public decimal CostPrice { get; set; }
 
     [Required(ErrorMessage = "Price is required")]
     [DecimalPrecision(2)]
     [Display(Name = "Product Price")]
-    public decimal? RetailPrice { get; set; }
-    
-    
+    public decimal RetailPrice { get; set; }
+
+
     [DecimalPrecision(2)]
     [Display(Name = "Special Product Price")]
     public decimal? SpecialPrice { get; set; }
@@ -86,25 +87,21 @@ public class ProductCreateOrUpdateModel
     public string MetaDescription { get; set; }
 
     [Display(Name = "Category")]
+    [BindProperty]
     public List<string> CategoryIds { get; set; }
-
     public SelectList CategorySelectList { get; set; }
-
-    
     public List<ImageModel> Images { get; set; }
 
     [Display(Name = "Images")]
     public List<string> ImageIds { get; set; }
-
     public List<string> ImageSortOrder { get; set; }
 
     [Display(Name = "Manufacturer")]
+    [BindProperty]
     public List<string> ManufacturerIds { get; set; }
-
     public SelectList ManufacturerSelectList { get; set; }
 
     public List<ProductSpecificationModel> Specifications { get; set; }
-
     public SelectList SpecificationKeySelectList { get; set; }
 
     public bool Published { get; set; }

@@ -26,7 +26,7 @@
             else
             {
                 <img src="~/Images/system/no-image.png" style="max-width:40px;max-height:40px;"
-                    class="card-img-top img-fluid" />
+                     class="card-img-top img-fluid" />
             }
             @Html.DisplayFor(model => model.MainImage)
         </dd>
@@ -171,14 +171,19 @@
                     else
                     {
                         <img src="~/Images/system/no-image.png" style="max-width:40px;max-height:40px;"
-                            class="card-img-top img-fluid" />
+                             class="card-img-top img-fluid" />
                     }
                     @Html.DisplayFor(model => image.FileName)
                 </dd>
-            }}
-        </dl>
-    </div>
-            @Html.ActionLink("Edit", "Edit", new {  id = Model.Id })  
- |
-<a asp-action="Index">Back to List</a>
-    </div>
+            }
+        }
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.Id })    |
+    <a asp-action="Index">Back to List</a>
+</div>
