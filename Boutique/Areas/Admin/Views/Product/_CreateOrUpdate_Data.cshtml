@@ -62,7 +62,7 @@
 
     <div class="form-group">
         <label asp-for="CategoryIds"></label>
-        <select name="CategoryIds" class="form-control">
+        <select asp-for="CategoryIds" name="CategoryIds" class="form-control">
             <option value="">Select a category</option>
             @foreach (var item in Model.CategorySelectList)
             {
@@ -75,7 +75,7 @@
     <div class="form-group">
         <label asp-for="ManufacturerIds"></label>
         <select name="ManufacturerIds" class="form-control">
-            <option selected>Open this select menu</option>
+            <option value="" selected>Open this select menu</option>
             @foreach (var item in Model.ManufacturerSelectList)
             {
                 <option value="@item.Value">@item.Text</option>

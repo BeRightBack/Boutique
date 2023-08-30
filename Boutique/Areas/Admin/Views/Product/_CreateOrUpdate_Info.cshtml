@@ -1,7 +1,11 @@
 ﻿@model ProductCreateOrUpdateModel
 
 <div class="form-horizontal">
-    <!-- Published -->
+    <div class="form-group">
+        <label asp-for="Id" class="control-label"></label>
+        <input asp-for="Id" class="form-control " disabled>
+        <span asp-validation-for="Id" class="text-danger"></span>
+    </div>
     <div class="form-group">
         <div class="checkbox">
             <label>
@@ -47,38 +51,5 @@
         <input asp-for="SKU" class="form-control" />
         <span asp-validation-for="SKU" class="text-danger"></span>
     </div>
-</div> <!-- form horizontal end -->
-<p>
-    <input type="radio" name="group1" value="2" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" id="panel1">panel 1
-    <br>
-    <input type="radio" name="group1" value="3" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" id="panel2"> panel 2
-
-</p>
-
-<div class="panel-heading" id="collapse1" >
-    <div id="collapseTwo" class="panel-collapse collapse">
-        <div class="panel-body">
-            you are now in body of panel1
-        </div>
-    </div>
 </div>
-<div class="panel-heading" id="panel2" >
-    <div id="collapseThree" class="panel-collapse collapse">
-        <div class="panel-body">
-            you are now in body of panel 2
-        </div>
-    </div>
-</div>
-<p>
-    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Link with href
-    </a>
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Button with data-bs-target
-    </button>
-</p>
-<div class="collapse" id="collapseExample">
-    <div class="card card-body">
-        Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-    </div>
-</div>
+    

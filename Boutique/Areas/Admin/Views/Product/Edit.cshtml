@@ -1,183 +1,77 @@
-@model Boutique.Areas.Admin.Models.ProductCreateOrUpdateModel
-
+﻿@model ProductCreateOrUpdateModel
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = ViewData["ContentHeader"] = "Add new product";
 }
-    
-<link rel="stylesheet" href="~/multiselect/bootstrap-select.min.css" />
-<link rel="stylesheet" href="~/multiselect/bootstrap.min.css" />
-
-<h2>Edit</h2>
-<hr />
 <div class="row">
     <div class="col-md-12">
-        <form asp-action="Edit">
+        <form asp-controller="Product" asp-action="Create" method="post">
+            <input type="hidden" asp-for="ActiveTab" />
+            <input type="hidden" id="continueEditing" name="continueEditing" value="false" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control " disabled>
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ShortDescription" class="control-label"></label>
-                <input asp-for="ShortDescription" class="form-control" />
-                <span asp-validation-for="ShortDescription" class="text-danger"></span>
-            </div>
-            <p>
-                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
-                    aria-expanded="false" aria-controls="collapseExample">
-                    Edit Description
-                </a>
-            </p>
-            <div class="collapse" id="collapseExample">
-                <div class="form-group card card-body">
-                    <label asp-for="Description" class="control-label"></label>
-                    <textarea id="tiny" asp-for="Description" class="form-control"></textarea>
-                    <span asp-validation-for="Description" class="text-danger"></span>
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="info" aria-selected="true">Info</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="data-tab" data-bs-toggle="tab" data-bs-target="#data" type="button" role="tab" aria-controls="data" aria-selected="false">Data</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="seo-tab" data-bs-toggle="tab" data-bs-target="#seo" type="button" role="tab" aria-controls="seo" aria-selected="false">SEO</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="image-tab" data-bs-toggle="tab" data-bs-target="#image" type="button" role="tab" aria-controls="image" aria-selected="false">Images</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="specification-tab" data-bs-toggle="tab" data-bs-target="#specification" type="button" role="tab" aria-controls="specification" aria-selected="false">Specification</button>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="info" role="tabpanel" aria-labelledby="info-tab"> @await Html.PartialAsync("_CreateOrUpdate_Info", Model)</div>
+                    <div class="tab-pane" id="data" role="tabpanel" aria-labelledby="data-tab">@await Html.PartialAsync("_CreateOrUpdate_Data", Model)</div>
+                    <div class="tab-pane" id="seo" role="tabpanel" aria-labelledby="seo-tab">@await Html.PartialAsync("_CreateOrUpdate_Seo", Model)</div>
+                    <div class="tab-pane" id="image" role="tabpanel" aria-labelledby="image-tab">@await Html.PartialAsync("_CreateOrUpdate_Images", Model)</div>
+                    <div class="tab-pane" id="specification" role="tabpanel" aria-labelledby="specification-tab">@await Html.PartialAsync("_CreateOrUpdate_Specification", Model)</div>
                 </div>
-            </div>
-           
+            </div> <!-- nav tabs custom end -->
             <div class="form-group">
-                <label asp-for="SKU" class="control-label"></label>
-                <input asp-for="SKU" class="form-control" />
-                <span asp-validation-for="SKU" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CostPrice" class="control-label"></label>
-                <input asp-for="CostPrice" class="form-control" />
-                <span asp-validation-for="CostPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RetailPrice" class="control-label"></label>
-                <input asp-for="RetailPrice" class="form-control" />
-                <span asp-validation-for="RetailPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SpecialPrice" class="control-label"></label>
-                <input asp-for="SpecialPrice" class="form-control" />
-                <span asp-validation-for="SpecialPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SpecialPriceStartDate" class="control-label"></label>
-                <input asp-for="SpecialPriceStartDate" class="form-control" />
-                <span asp-validation-for="SpecialPriceStartDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SpecialPriceEndDate" class="control-label"></label>
-                <input asp-for="SpecialPriceEndDate" class="form-control" />
-                <span asp-validation-for="SpecialPriceEndDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StockQuantity" class="control-label"></label>
-                <input asp-for="StockQuantity" class="form-control" />
-                <span asp-validation-for="StockQuantity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MinimumStockQuantity" class="control-label"></label>
-                <input asp-for="MinimumStockQuantity" class="form-control" />
-                <span asp-validation-for="MinimumStockQuantity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NotifyForQuantityBelow" class="control-label"></label>
-                <input asp-for="NotifyForQuantityBelow" class="form-control" />
-                <span asp-validation-for="NotifyForQuantityBelow" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="DisplayAvailability" /> @Html.DisplayNameFor(model =>
-                    model.DisplayAvailability)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="MinimumCartQuantity" class="control-label"></label>
-                <input asp-for="MinimumCartQuantity" class="form-control" />
-                <span asp-validation-for="MinimumCartQuantity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MaximumCartQuantity" class="control-label"></label>
-                <input asp-for="MaximumCartQuantity" class="form-control" />
-                <span asp-validation-for="MaximumCartQuantity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SeoUrl" class="control-label"></label>
-                <input asp-for="SeoUrl" class="form-control" />
-                <span asp-validation-for="SeoUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MetaTitle" class="control-label"></label>
-                <input asp-for="MetaTitle" class="form-control" />
-                <span asp-validation-for="MetaTitle" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MetaKeywords" class="control-label"></label>
-                <input asp-for="MetaKeywords" class="form-control" />
-                <span asp-validation-for="MetaKeywords" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MetaDescription" class="control-label"></label>
-                <input asp-for="MetaDescription" class="form-control" />
-                <span asp-validation-for="MetaDescription" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Published" /> @Html.DisplayNameFor(model => model.Published)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="DateAdded" class="control-label"></label>
-                <input asp-for="DateAdded" class="form-control" />
-                <span asp-validation-for="DateAdded" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CategoryIds"></label>
-                <select class="form-select form-select-sm" aria-label=".form-select-sm "
-                    asp-items="Model.CategorySelectList">
-                    <option selected>Select a Category</option>
-                </select>
-                <span asp-validation-for="CategoryIds" class="text-danger"></span>
-
-            </div>
-            <div class="form-group">
-                <label asp-for="ManufacturerIds"></label>
-                <select class="form-control form-select form-select-sm" aria-label=".form-select-sm "
-                    asp-items="Model.ManufacturerSelectList">
-                    <option selected>Select a Manufacturer</option>
-                </select>
-                <span asp-validation-for="ManufacturerIds" class="text-danger"></span>
+                
             </div>
 
-            <div class="form-group">
-                <label asp-for="Specifications"></label>
-                <select asp-items="Model.SpecificationKeySelectList" class="selectpicker form-control" multiple>
+            <button type="submit" class="btn btn-primary">Create</button>
 
-                </select>
-                <span asp-validation-for="Specifications" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+            <a asp-action="List" class="btn btn-default">Cancel</a>
         </form>
-    </div>
-</div>
+    </div> <!-- col md 12 end -->
+</div> <!-- row end -->
 
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+@await Html.PartialAsync("_ImageManagerModal")
+
 
 @section Scripts {
     
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/multiselect/popper.min.js"></script>
-    <script src="~/multiselect/bootstrap.min.js"></script>
-    <script src="~/multiselect/bootstrap-select.min.js"></script>
-    
-    <script src="~/multiselect/main.js"></script>
+    @* <script>
+        $(document).ready(function () {
+            $('select').selectpicker();
+        });
+    </script> *@
+       
+   @*  <script>
+        var tabEl = document.querySelector('button[data-bs-toggle="tab"]')
+        tabEl.addEventListener('shown.bs.tab', function (event) {
+            event.target // newly activated tab
+            event.relatedTarget // previous active tab
+        })
+    </script> *@
 
-   
+   @*  <script>
+        var firstTabEl = document.querySelector('#myTab li:last-child a')
+        var firstTab = new bootstrap.Tab(firstTabEl)
+
+        firstTab.show()
+    </script> *@
+
 }

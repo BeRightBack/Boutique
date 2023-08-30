@@ -2,11 +2,11 @@ appsettings.json
 SeedData.cs
 /Database/*
 /Viewstest/
-/bin/*
+**/bin
 **/logs
-/obj/*
+**/obj
 /Properties/*
-/wwwroot/**
+/wwwroot/**/
 
 
 

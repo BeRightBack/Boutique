@@ -19,10 +19,6 @@
       "destination": "wwwroot/lib/jquery-validation-unobtrusive/dist"
     },
     {
-      "library": "font-awesome@6.4.0",
-      "destination": "wwwroot/lib/font-awesome/dist"
-    },
-    {
       "library": "bootstrap-icons@1.10.5",
       "destination": "wwwroot/lib/bootstrap-icons/dist"
     },
@@ -74,6 +70,33 @@
     {
       "library": "perfect-scrollbar@1.5.5",
       "destination": "wwwroot/lib/perfect-scrollbar"
+    },
+    {
+      "library": "typicons@2.1.2",
+      "destination": "wwwroot/lib/typicons"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "feather-webfont@4.22.3",
+      "destination": "wwwroot/lib/feather"
+    },
+    {
+      "library": "MaterialDesign-Webfont@7.2.96",
+      "destination": "wwwroot/lib/mdi"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "ti-icons@0.1.2",
+      "destination": "wwwroot/lib/ti-icons"
+    },
+    {
+      "library": "simple-line-icons@2.5.5",
+      "destination": "wwwroot/lib/simple-line-icons"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "font-awesome@4.7.0",
+      "destination": "wwwroot/lib/font-awesome-4/"
     }
   ]
 }
