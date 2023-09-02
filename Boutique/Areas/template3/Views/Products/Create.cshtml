@@ -13,17 +13,14 @@
         });
     </script>
 }
+<div>
 
-@section headerLeftOptional {
     <a asp-action="List" class="fa fa-arrow-circle-left"> back to list</a>
-}
 
-@section actionHeader {
     <div class="input-group">
         <button type="button" class="btn btn-primary input-stack-margin" id="save"><i class="fa fa-save"></i>&nbsp; Save</button>
         <button type="button" class="btn btn-primary input-stack-margin" id="continue"><i class="fa fa-save"></i>&nbsp; Save and continue editing</button>
     </div>
-}
 
 <div class="row">
     <div class="col-md-12">
@@ -67,7 +64,7 @@
         </form>
     </div> <!-- col md 12 end -->
 </div> <!-- row end -->
-
+    </div>
 @await Html.PartialAsync("_ImageManagerModal")
 
 @section scripts {

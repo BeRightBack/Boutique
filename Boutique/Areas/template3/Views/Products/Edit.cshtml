@@ -14,17 +14,14 @@
     </script>
 }
 
-@section headerLeftOptional {
-    <a asp-action="List" class="fa fa-arrow-circle-left"> back to list</a>
-}
 
-@section actionHeader {
+    <a asp-action="List" class="fa fa-arrow-circle-left"> back to list</a>
+
     <div class="input-group">
         <button type="button" class="btn btn-primary input-stack-margin" id="save"><i class="fa fa-save"></i>&nbsp; Save</button>
         <button type="button" class="btn btn-primary input-stack-margin" id="continue"><i class="fa fa-save"></i>&nbsp; Save and continue editing</button>
         <a asp-area="" asp-controller="Product" asp-action="@Model.SeoUrl" class="btn btn-success input-stack-margin"><i class="fa fa-search"></i>&nbsp; View in store</a>
     </div>
-}
 
 <div class="row">
     <div class="col-md-12">

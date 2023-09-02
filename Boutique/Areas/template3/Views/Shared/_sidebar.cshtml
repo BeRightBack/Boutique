@@ -1,0 +1,93 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
+                <i class="fa fa-line-chart menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" asp-area="Admin" asp-controller="Todo" asp-action="Index">
+                <i class="mdi mdi-list-status menu-icon"></i>
+              <span class="menu-title">Todo's</span>
+            </a>
+          </li>
+          <li class="nav-item nav-category">Accounts</li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon fa fa-users"></i>
+              <span class="menu-title">Users</span>
+              <i class="menu-arrow"></i> 
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" asp-area="Admin" asp-controller="User" asp-action="Index">Users</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-area="Admin" asp-controller="RoleAdmin" asp-action="Index">Roles</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-area="Admin" asp-controller="Claim" asp-action="Index">Claims</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-area="Admin" asp-controller="Document" asp-action="Index">Documents</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item nav-category">Global</li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic2">
+              <i class="menu-icon fa fa-globe"></i>
+              <span class="menu-title">Localizations</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic2">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" asp-area="Admin" asp-controller="Language" asp-action="Index">Languages</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-area="Admin" asp-controller="Location" asp-action="Index">Location</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-area="Admin" asp-controller="Localization" asp-action="Index">Localization</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item nav-category">Store</li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
+                <i class="menu-icon fa fa-shopping-bag"></i>
+              <span class="menu-title">Store Admin</span>
+              <i class="menu-arrow"></i> 
+            </a>
+            <div class="collapse" id="ui-basic3">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" asp-area="Admin" asp-controller="Category" asp-action="Index">Categories</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-area="Admin" asp-controller="Product" asp-action="Index">Products</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-area="Admin" asp-controller="Product2" asp-action="Index">Product2</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-area="Editor" asp-controller="Editor" asp-action="Index">Editor</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-area="template" asp-controller="Dashboard" asp-action="Index">template</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-area="template2" asp-controller="Dashboard" asp-action="Index">template2</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-area="template3" asp-controller="Dashboard" asp-action="Index">template3</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-area="template4" asp-controller="Dashboard" asp-action="Index">template4</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-area="Admin" asp-controller="Order" asp-action="Index">Orders </a></li>
+              </ul>
+            </div>
+          </li>
+        <li class="nav-item nav-category">StoreTemplate</li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
+                <i class="menu-icon fa fa-shopping-bag"></i>
+                <span class="menu-title">Store Admin</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic3">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" asp-area="template3" asp-controller="Category" asp-action="Index">Categories</a></li>
+                    <li class="nav-item"> <a class="nav-link" asp-area="template3" asp-controller="Products" asp-action="Index">Products</a></li>
+                    <li class="nav-item"> <a class="nav-link" asp-area="Editor" asp-controller="Editor" asp-action="Index">Editor</a></li>
+                    <li class="nav-item"> <a class="nav-link" asp-area="template" asp-controller="Dashboard" asp-action="Index">template</a></li>
+                    <li class="nav-item"> <a class="nav-link" asp-area="template2" asp-controller="Dashboard" asp-action="Index">template2</a></li>
+                    <li class="nav-item"> <a class="nav-link" asp-area="template3" asp-controller="Dashboard" asp-action="Index">template3</a></li>
+                    <li class="nav-item"> <a class="nav-link" asp-area="template4" asp-controller="Dashboard" asp-action="Index">template4</a></li>
+                    <li class="nav-item"> <a class="nav-link" asp-area="template3" asp-controller="Order" asp-action="Index">Orders </a></li>
+                </ul>
+            </div>
+        </li>
+           
+          
+          
+          
+          
+        </ul>
+      </nav>

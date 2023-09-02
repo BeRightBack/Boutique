@@ -1,78 +1,95 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@ViewData["Title"] | aspCart</title>
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Admin </title>
+    <link rel="icon" type="image/png" href="~/Images/system/icon.png" />
+    <!-- Icons -->
+    <link rel="stylesheet" href="~/lib/feather/dist/feather-icons.css">
+    <link rel="stylesheet" href="~/lib/mdi/css/materialdesignicons.css">
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/dist/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/lib/font-awesome-4/css/font-awesome.css" />
+    <link rel="stylesheet" href="~/lib/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="~/lib/typicons/typicons.css">
+    <link rel="stylesheet" href="~/lib/simple-line-icons/css/simple-line-icons.css">
+
+    @* <link rel="stylesheet" href="~/template2/vendors/css/vendor.bundle.base.css"> *@
+
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-select/dist/css/bootstrap-select.min.css"/>
+    <link rel="stylesheet" href="~/lib/perfect-scrollbar/css/perfect-scrollbar.css" />
+    @* <link rel="stylesheet" href="~/dashboard/bundle.base.css" />  *@
     
-        <!-- css -->
-        <link href="~/Catalog/dist/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="~/Catalog/dist/font-awesome/css/font-awesome.css" rel="stylesheet" />
-        <link href="~/Catalog/dist/morris/morris.css" rel="stylesheet" />
-        <link href="~/Catalog/dist/adminlte/css/AdminLTE.min.css" rel="stylesheet" />
-        <link href="~/Catalog/dist/adminlte/css/skins/skin-blue.min.css" rel="stylesheet" />
-        <link href="~/Catalog/dist/Icheck/skins/square/blue.css" rel="stylesheet" />
-        <link href="~/Catalog/dist/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
-        <link href="~/Catalog/dist/kendoui.2017.1.118.core/styles/kendo.common-bootstrap.min.css" rel="stylesheet" />
-        <link href="~/Catalog/dist/kendoui.2017.1.118.core/styles/kendo.bootstrap.min.css" rel="stylesheet" />
-        <link href="~/Catalog/css/admin.css" rel="stylesheet" />
-        <link href="~/Catalog/css/site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/dashboard/dashboard.css  />
+    
+    <link rel="stylesheet" href="~/template2/css/vertical-layout-light/style.css">
 
-        <!-- js -->
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/Catalog/dist/bootstrap/js/bootstrap.min.js"></script>
-        <script src="~/Catalog/dist/bootstrap/js/tether.min.js"></script>
-        <script src="~/Catalog/dist/adminlte/js/app.js"></script>
-        <script src="~/Catalog/dist/Icheck/icheck.js"></script>
-        <script src="~/Catalog/dist/DataTables/js/jquery.dataTables.js"></script>
-        <script src="~/Catalog/dist/DataTables/js/dataTables.bootstrap.js"></script>
-        <script src="~/Catalog/dist/kendoui.2017.1.118.core/js/kendo.ui.core.min.js"></script>
-        <script src="~/Catalog/dist/ckeditor/ckeditor.js"></script>
-        <script src="~/Catalog/dist/raphael/raphael.min.js"></script>
-        <script src="~/Catalog/dist/morris/morris.min.js"></script>
-        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-   
+    <link rel="shortcut icon" href="~/favicon.ico" />
 
+
+    <!-- TinyMCE -->
+    <script src="~/lib/tiny/tinymce.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea#tiny',
+            plugins: [
+                'file', 'save', 'a11ychecker', 'advlist', 'advcode', 'advtable', 'autolink', 'checklist', 'export',
+                'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks',
+                'powerpaste', 'fullscreen', 'formatpainter', 'insertdatetime', 'media', 'table', 'help', 'wordcount'
+            ],
+            toolbar: 'save undo redo | a11ycheck casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify |' +
+                'bullist numlist checklist outdent indent | removeformat | code table help'
+        })
+    </script>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">
-        <!-- Main Header -->
-        @await Html.PartialAsync("_TopMenu")
-        <!-- Left side column. contains the logo and sidebar -->
-        @await Html.PartialAsync("_LeftMenu")
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <h1>
-                    @ViewData["ContentHeader"]
-                    <small>@await RenderSectionAsync("headerLeftOptional", required: false)</small>
-                </h1>
-                <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                    <li class="active">Here</li>
-                </ol>
-            </section>
-            <section class="content-header clearfix">
-                <div class="pull-left">
-                    @await RenderSectionAsync("actionHeader", required: false)
-                </div>
-            </section>
-            <!-- Main content -->
-            <section class="content">
-                <!-- Your Page Content Here -->
-                @RenderBody()
-            </section>
-            <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
-        <!-- Main Footer -->
-        @await Html.PartialAsync("_Footer")
-    </div>
-    <!-- ./wrapper -->
 
-    @RenderSection("menu", required: false)
-    @RenderSection("scripts", required: false)
+<body>
+   
+    <partial name="_navbar" />
+    <div class="container-fluid page-body-wrapper">       
+        <partial name="_sidebar" />
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="home-tab"></div>
+                        <div class="container-fluid">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <partial name="_Footer" />
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    @* <script src="~/template2/vendors/js/vendor.bundle.base.js"></script> *@
+    
+    <script src="~/template2/js/off-canvas.js"></script>
+    <script src="~/template2/js/hoverable-collapse.js"></script>
+    <script src="~/template2/js/template.js"></script>
+    @* <script src="~/template2/js/settings.js"></script> *@
+    <script src="~/template2/js/jquery.cookie.js"></script>
+
+    @await RenderSectionAsync("menu", required: false)
+    @await RenderSectionAsync("Scripts", required: false)
+    @await RenderSectionAsync("headerLeftOptional", required: false)
+    @await RenderSectionAsync("actionHeader", required: false)
+
+
 </body>
+
 </html>
+

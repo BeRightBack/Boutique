@@ -60,10 +60,12 @@
         <span asp-validation-for="DateAdded" class="text-danger"></span>
     </div>
 
+
+
     <div class="form-group">
-        <label asp-for="CategoryIds"></label>
-        <select asp-for="CategoryIds" name="CategoryIds" class="form-control">
-            <option value="">Select a category</option>
+        <label asp-for="CategoryIds">@Model.CategoryIds[0].</label>
+        <select name="CategoryIds" class="form-control" id="single-select-field">
+            <option value="@Model.CategoryIds.First()"></option>
             @foreach (var item in Model.CategorySelectList)
             {
                 <option value="@item.Value">@item.Text</option>
@@ -74,17 +76,23 @@
 
     <div class="form-group">
         <label asp-for="ManufacturerIds"></label>
-        <select name="ManufacturerIds" class="form-control">
-            <option value="" selected>Open this select menu</option>
-            @foreach (var item in Model.ManufacturerSelectList)
-            {
-                <option value="@item.Value">@item.Text</option>
-            }
+        <select asp-items="Model.ManufacturerSelectList" name="ManufacturerIds" class="form-control form-select" id="single-select-field" data-placeholder="Choose one thing">
+            <option selected></option>
+            
         </select>
         <span asp-validation-for="ManufacturerIds" class="text-danger"></span>
     </div>
+    
 </div> <!-- form horizontal end -->
 @section scripts {
-
+    <script>
+        
+        $('#single-select-clear-field').select2({
+            theme: "bootstrap-5",
+            width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+            placeholder: $(this).data('placeholder'),
+            allowClear: true
+        });
+    </script>
 
 }
