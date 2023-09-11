@@ -70,11 +70,11 @@ public class SeedData_example
                         FirstName = "Steven",
                         LastName = "Pinel",
                         UserName = "BeRightBack",
-                        Email = "steven_pinel@hotmail.com",
+                        Email = "steven_pinel@example.com",
                         EmailConfirmed = true,
-                        ProfilePicturePath = "https://frenzyzone.com/Images/user-icon.jpg"
+                        ProfilePicturePath = "https://example.com/Images/user-icon.jpg"
                     };
-                    var result = _userManager.CreateAsync(_BeRightBack, "Frenzy@2022").Result;
+                    var result = _userManager.CreateAsync(_BeRightBack, "Password@2022").Result;
                     if (!result.Succeeded)
                     {
                         throw new Exception(result.Errors.First().Description);
@@ -85,10 +85,10 @@ public class SeedData_example
                        new Claim("user.firstname","Steven"),
                        new Claim("user.lastname","Pinel"),
                        new Claim("user.fullname", "Steven Pinel"),
-                       new Claim("user.email","steven_pinel@hotmail.com"),
-                       new Claim("user.picture","https://frenzyzone.com/Images/user-icon.jpg"),
+                       new Claim("user.email","steven_pinel@example.com"),
+                       new Claim("user.picture","https://example.com/Images/user-icon.jpg"),
                        new Claim("user.role","User"),
-                       new Claim("user.website","https://frenzyzone.com")
+                       new Claim("user.website","https://example.com")
                     }).Result;
 
                     if (!_userManager.IsInRoleAsync(_BeRightBack, member.Name).Result)
@@ -115,11 +115,11 @@ public class SeedData_example
                         FirstName = "Steven",
                         LastName = "Pinel",
                         UserName = "Administrator",
-                        Email = "admin@frenzyzone.com",
+                        Email = "admin@example.com",
                         EmailConfirmed = true,
-                        ProfilePicturePath = "https://frenzyzone.com/Images/user-icon.jpg"
+                        ProfilePicturePath = "https://example.com/Images/user-icon.jpg"
                     };
-                    var result = _userManager.CreateAsync(bob, "Frenzy@2022").Result;
+                    var result = _userManager.CreateAsync(bob, "Password@2022").Result;
                     if (!result.Succeeded)
                     {
                         throw new Exception(result.Errors.First().Description);
@@ -130,11 +130,11 @@ public class SeedData_example
                        new Claim("user.firstname","Steven"),
                        new Claim("user.lastname","Pinel"),
                        new Claim("user.fullname", "Steven Pinel"),
-                       new Claim("user.email","admin@frenzyzone.com"),
-                       new Claim("user.picture","https://frenzyzone.com/Images/user-icon.jpg"),
+                       new Claim("user.email","admin@example.com"),
+                       new Claim("user.picture","https://example.com/Images/user-icon.jpg"),
                        new Claim("user.role","User"),
                        new Claim("user.role","Administrator"),
-                       new Claim("user.website","https://frenzyzone.com")
+                       new Claim("user.website","https://example.com")
                     }).Result;
 
                     if (!_userManager.IsInRoleAsync(bob, admin.Name).Result)

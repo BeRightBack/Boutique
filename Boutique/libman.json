@@ -55,26 +55,9 @@
       "destination": "wwwroot/lib/select2-bootstrap-5-theme/"
     },
     {
-      "library": "tinymce@6.6.2",
-      "destination": "wwwroot/lib/tiny",
-      "files": [
-        "tinymce.min.js",
-        "plugins/**/*",
-        "skins/**/*",
-        "themes/**/*",
-        "icons/**/*",
-        "models/**/*",
-        "langs/**/*"
-      ]
-    },
-    {
       "provider": "jsdelivr",
       "library": "bootstrap-select@1.14.0-beta3",
       "destination": "wwwroot/lib/bootstrap-select"
-    },
-    {
-      "library": "perfect-scrollbar@1.5.5",
-      "destination": "wwwroot/lib/perfect-scrollbar"
     },
     {
       "library": "typicons@2.1.2",
@@ -106,6 +89,15 @@
       "provider": "jsdelivr",
       "library": "js-cookie@3.0.5",
       "destination": "wwwroot/lib/js-cookie/"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "perfect-scrollbar@1.5.5",
+      "destination": "wwwroot/lib/perfect-scrollbar/"
+    },
+    {
+      "library": "tinymce@6.7.0",
+      "destination": "wwwroot/lib/tiny/"
     }
   ]
 }

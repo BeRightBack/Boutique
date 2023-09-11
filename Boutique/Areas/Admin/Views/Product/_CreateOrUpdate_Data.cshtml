@@ -19,12 +19,13 @@
 
     <div class="form-group">
         <label asp-for="SpecialPriceStartDate" class="control-label"></label>
-        <input asp-for="SpecialPriceStartDate" class="form-control" />
+        <input asp-for="SpecialPriceStartDate" class="form-control" value="@Model.SpecialPriceStartDate.ToLongDateString()" />
+
         <span asp-validation-for="SpecialPriceStartDate" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="SpecialPriceEndDate" class="control-label"></label>
-        <input asp-for="SpecialPriceEndDate" class="form-control" />
+        <input asp-for="SpecialPriceEndDate" class="form-control" value="@Model.SpecialPriceEndDate.ToLongDateString()" />
         <span asp-validation-for="SpecialPriceEndDate" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -63,30 +64,60 @@
 
 
     <div class="form-group">
-        <label asp-for="CategoryIds">@Model.CategoryIds[0].</label>
-        <select name="CategoryIds" class="form-control" id="single-select-field">
-            <option value="@Model.CategoryIds.First()"></option>
+        <label asp-for="CategoryIds"></label>
+        <select name="CategoryIds" class="form-control form-select"
+            id="single-select-field">
+            <option value=""></option>
+
+            @if(Model.CategoryIds != null){
+            @foreach (var item in Model.CategorySelectList)
+            {
+                <option value="@item.Value" selected="@(item.Value == Model.CategoryIds[0])">@item.Text</option>
+            }
+            }
+            else{
             @foreach (var item in Model.CategorySelectList)
             {
                 <option value="@item.Value">@item.Text</option>
-            }
+            }}
         </select>
         <span asp-validation-for="CategoryIds" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="ManufacturerIds"></label>
-        <select asp-items="Model.ManufacturerSelectList" name="ManufacturerIds" class="form-control form-select" id="single-select-field" data-placeholder="Choose one thing">
-            <option selected></option>
-            
+        <select asp-items="Model.ManufacturerSelectList" name="ManufacturerIds" class="form-control form-select"
+            id="single-select-field" data-placeholder="Choose one thing">
+            <option value=""></option>
+            @if (Model.ManufacturerIds != null)
+            {
+                @foreach (var item in Model.ManufacturerSelectList)
+
+
+
+                {
+                    <option value="@item.Value" selected="@(item.Value == Model.ManufacturerIds[0])">@item.Text</option>
+                }
+            }
+            else
+            {
+                @foreach (var item in Model.ManufacturerSelectList)
+
+
+
+                {
+                    <option value="@item.Value">@item.Text</option>
+
+                }}
+
         </select>
         <span asp-validation-for="ManufacturerIds" class="text-danger"></span>
     </div>
-    
+
 </div> <!-- form horizontal end -->
 @section scripts {
     <script>
-        
+
         $('#single-select-clear-field').select2({
             theme: "bootstrap-5",
             width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
