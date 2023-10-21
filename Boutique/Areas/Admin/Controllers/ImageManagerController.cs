@@ -2,9 +2,12 @@
 using Boutique.Areas.Admin.Models;
 using Boutique.Controllers;
 using Boutique.Entity;
+using Boutique.Models.ManageViewModels;
 using Boutique.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Extensions.FileProviders;
 
 namespace Boutique.Areas.Admin.Controllers;
 
@@ -12,22 +15,36 @@ namespace Boutique.Areas.Admin.Controllers;
 public class ImageManagerController : BaseController
 {
     private readonly IImageManagerService _imageManagerService;
-    private readonly IWebHostingEnvironment _hostingEnvironment;
 
     public ImageManagerController(
         ILanguageService languageService,
         ILocalizationService localizationService,
-        IWebHostingEnvironment hostingEnvironment,
         IImageManagerService imageManagerService) : base(languageService, localizationService)
     {
         _imageManagerService = imageManagerService;
-        _hostingEnvironment = hostingEnvironment;
     }
 
     // GET: /ImageManager/
     public IActionResult Index()
     {
-        return View();
+        // get all image from database
+        var imageList = _imageManagerService.GetAllImages();
+        var model = new List<ImageModel>();
+
+        foreach (var image in imageList)
+        {
+            var imageModel = new ImageModel
+            {
+                Id = image.Id,
+                FileName = image.FileName,
+                Path = image.Path,
+                ImageStored = image.ImageStored
+
+            };
+            model.Add(imageModel);
+        }
+
+        return View(model);
     }
 
     // GET: /ImageManager/GetAllImages
@@ -42,7 +59,10 @@ public class ImageManagerController : BaseController
             var imageModel = new ImageModel
             {
                 Id = image.Id,
-                FileName = image.FileName
+                FileName = image.FileName,
+                Path = image.Path,
+                ImageStored= image.ImageStored
+
             };
             model.Add(imageModel);
         }
@@ -67,7 +87,9 @@ public class ImageManagerController : BaseController
             var imageModel = new ImageModel
             {
                 Id = image.Id,
-                FileName = image.FileName
+                FileName = image.FileName,
+                Path = image.Path,
+                ImageStored = image.ImageStored
             };
             model.Add(imageModel);
         }
@@ -78,14 +100,14 @@ public class ImageManagerController : BaseController
     // POST: /ImageManager/UploadImages
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> UploadImages()
+    public async Task<IActionResult> UploadImages(ImageModel model)
     {
         var files = Request.Form.Files;
 
         if (files.Count > 0)
         {
             var imageList = new List<Image>();
-            var dir = Path.Combine(_hostingEnvironment.WebRootPath, "images/app");
+            var dir = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images","app")).Root;
             Directory.CreateDirectory(dir);
 
             try
@@ -101,7 +123,9 @@ public class ImageManagerController : BaseController
                     var productImage = new Image
                     {
                         Id = Guid.NewGuid(),
-                        FileName = "/images/app/" + imageFileName
+                        FileName = "/Images/app/" + imageFileName,
+                        Path = model.Path,
+                        ImageStored = model.ImageStored
                     };
 
                     // save image to local disk
@@ -139,7 +163,7 @@ public class ImageManagerController : BaseController
                 if (image != null)
                 {
                     // delete image from local disk
-                    var dir = Path.Combine(_hostingEnvironment.WebRootPath, "images/app");
+                    var dir = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "app")).Root;
                     var imagePath = Path.Combine(dir, image.FileName);
 
                     if (System.IO.File.Exists(imagePath))
@@ -158,10 +182,5 @@ public class ImageManagerController : BaseController
         {
             throw;
         }
-    }
-
-    public interface IWebHostingEnvironment
-    {
-        string WebRootPath { get; }
     }
 }

@@ -21,6 +21,8 @@
     <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Test\Data\" />
+    <Folder Include="Areas\Test\Models\" />
     <Folder Include="logs\" />
     <Folder Include="wwwroot\Images\assets\" />
     <Folder Include="wwwroot\Images\users\" />

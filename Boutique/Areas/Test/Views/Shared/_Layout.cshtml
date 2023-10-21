@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Admin </title>
+    <link rel="icon" type="image/png" href="~/Images/system/icon.png" />
+    <!-- Icons -->
+    <link rel="stylesheet" href="~/lib/feather/dist/feather-icons.css">
+    <link rel="stylesheet" href="~/lib/mdi/css/materialdesignicons.css">
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/dist/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/lib/font-awesome-4/css/font-awesome.css" />
+    <link rel="stylesheet" href="~/lib/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="~/lib/typicons/typicons.css">
+    <link rel="stylesheet" href="~/lib/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/select2/css/select2.min.css" />
+    <link rel="stylesheet" href="~/lib/select2-bootstrap-5-theme/dist/select2-bootstrap-5-theme.min.css"/>
+    <link rel="stylesheet" href="~/lib/bootstrap-select/dist/css/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="~/lib/perfect-scrollbar/css/perfect-scrollbar.css" />
+    
+    
+    <link rel="stylesheet" href="~/template2/css/vertical-layout-light/style.css">
+
+    <link rel="shortcut icon" href="~/favicon.ico" />
+
+    <script src="~/lib/tiny/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+        tinymce.init({
+            selector: 'textarea'
+        });
+    </script>
+</head>
+
+<body>
+   
+    <partial name="_navbar" />
+    <div class="container-fluid page-body-wrapper">       
+        <partial name="_sidebar" />
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="home-tab"></div>
+                        <div class="container-fluid">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <partial name="_Footer" />
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/select2/js/select2.min.js"></script>
+    <script src="~/lib/perfect-scrollbar/dist/perfect-scrollbar.js"></script>
+    <script src="~/dashboard/dashboard.js"></script>
+    @* <script src="~/lib/js-cookie/dist/js.cookie.js"></script> *@
+
+    @await RenderSectionAsync("menu", required: false)
+    @await RenderSectionAsync("Scripts", required: false)
+    @await RenderSectionAsync("headerLeftOptional", required: false)
+    @await RenderSectionAsync("actionHeader", required: false)
+
+
+</body>
+
+</html>
+
